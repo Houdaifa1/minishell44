@@ -8,6 +8,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <string.h>
+# include <fcntl.h>
 #include <errno.h>
 
 typedef struct data
@@ -30,6 +31,13 @@ typedef struct hold
     char *temp;
 
 } t_hold;
+
+typedef struct redirect_info
+{
+    char *commande;
+    char *redirection;
+    char *file_name;
+} t_redirect_info;
 
 extern int exit_code;
 
