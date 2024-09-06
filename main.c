@@ -29,6 +29,7 @@ int main(int arc, char **arv, char **envp)
     t_hold *hold_vars;
     char *input;
     int saved_stdout;
+    int saved_stdin;
     char *temp;
 
     env_var = env_to_list(envp);
@@ -37,6 +38,7 @@ int main(int arc, char **arv, char **envp)
     while (1)
     {
         saved_stdout = dup(STDOUT_FILENO);
+        saved_stdin = dup(STDIN_FILENO);
         input = readline(temp = print_prompt(env_var, NULL, NULL));
         if (input[0] != '\0')
         {
@@ -47,9 +49,11 @@ int main(int arc, char **arv, char **envp)
                 hold_vars->temp = temp;
                 exec_commandes(data, &env_var, &data, &hold_vars);
                 dup2(saved_stdout, STDOUT_FILENO);
+                dup2(saved_stdin, STDIN_FILENO);
                 close(saved_stdout);
+                close(saved_stdin);
             }
-    
+
         }
         ft_free_list(data);
         data = NULL;

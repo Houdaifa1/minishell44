@@ -32,12 +32,6 @@ typedef struct hold
 
 } t_hold;
 
-typedef struct redirect_info
-{
-    char *commande;
-    char *redirection;
-    char *file_name;
-} t_redirect_info;
 
 extern int exit_code;
 
@@ -90,5 +84,6 @@ void    exec_with_pipes(t_env **envp, t_data **data, t_hold **hold_vars);
 int    exec_simple_commande(char **argumment, t_env **envp, t_data **data, t_hold **hold_vars);
 void	ft_putstr_fd(char const *str);
 void ft_print_in_stderr(char *s1, char *s2, char *s3);
+void ft_free_arr(char **paths);
 
 #endif

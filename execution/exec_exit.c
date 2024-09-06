@@ -50,7 +50,7 @@ int exec_exit(char **commande, t_env **envp, t_data **data, t_hold **hold_vars)
 {
     int i;
 
-    
+    printf("exit\n");
     if (commande[1] != NULL && ft_isalnum(commande[1]) == 1)
     {
         //printf("exit: %s: numeric argument required\n", commande[1]);
@@ -58,9 +58,9 @@ int exec_exit(char **commande, t_env **envp, t_data **data, t_hold **hold_vars)
         free((*hold_vars)->input);
         free((*hold_vars)->temp);
         free(*hold_vars);
-        ft_free_list(*data);
+      //  ft_free_list(*data);
         ft_free_list2(*envp);
-        exit_code = 2;
+        exit_code = 2; 
         exit(2);
     }
     else if (commande[1] != NULL && commande[2] != NULL)
@@ -75,7 +75,7 @@ int exec_exit(char **commande, t_env **envp, t_data **data, t_hold **hold_vars)
         free((*hold_vars)->input);
         free((*hold_vars)->temp);
         free(*hold_vars);
-        ft_free_list(*data);
+       // ft_free_list(*data);
         ft_free_list2(*envp);
         exit_code = i;
         exit(i);
@@ -85,9 +85,8 @@ int exec_exit(char **commande, t_env **envp, t_data **data, t_hold **hold_vars)
         free((*hold_vars)->input);
         free((*hold_vars)->temp);
         free(*hold_vars);
-        ft_free_list(*data);
+       // ft_free_list(*data);
         ft_free_list2(*envp);
-        exit_code = 0;
-        exit (0);
+        exit (exit_code);
     }
 }

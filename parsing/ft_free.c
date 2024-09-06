@@ -23,6 +23,7 @@ void ft_free_list(t_data *head)
         free(temp);
     }
 }
+
 void ft_free_list2(t_env *head)
 {
     t_env *temp;
